@@ -4,6 +4,7 @@ import * as schema from "./schema";
 
 async function main() {
   const db = drizzle(process.env.DATABASE_URL!);
+  console.log("SEEDING DB");
 
   await seed(db, { patients: schema.patients }).refine((f) => ({
     patients: {
