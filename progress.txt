@@ -1,3 +1,26 @@
-First steps
+Tasks
+-----
 
 - Updating Docker Desktop and WSL
+	Had an old version of DockerDesktop and WSL that needed updating and linking before start-db could run
+	
+- changing password in .env
+	Changed the postgress password in .env for database
+	
+- Run start-database.sh
+	Sucessfully run docker container using start-database script.
+	
+- Add to git
+	Add codebase to github
+	
+- first build
+	errors: API KEY is missing
+	first check - where is API key used? It looks like it is not used, so will code work with it removed (prefer removal of supurulous over mocking).
+
+- generate db
+	npm db:generate
+	npm db:push
+	check db tables created (using beehive)
+	
+- add drizzle-seed library for seeding
+	and create initial seed.ts
