@@ -24,3 +24,8 @@ Tasks
 	
 - add drizzle-seed library for seeding
 	and create initial seed.ts
+	* manual seeding in order to progress to second part of task
+	
+- added routing for patient database
+
+- added basic listing of patients
