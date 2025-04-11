@@ -1,10 +1,12 @@
 import { HydrateClient, api } from "@lutra/trpc/server";
-
 import { InstructionBanner } from "./_components/instruction-banner";
+import type { patientData } from "./patientData";
+import { PatientsTable } from "./patientsTable";
+
 
 export default async function Home() {
 	const greeting = await api.hello.greeting();
-	const patientList = await api.patients.patientsList();
+	const patientsList: patientData[] | null = await api.patients.patientsList();
 
 	return (
 		<HydrateClient>
@@ -12,7 +14,6 @@ export default async function Home() {
 				<InstructionBanner />
 				<header>
 					<h1>{greeting}</h1>
-					<h2>{patientList[0]?.firstName}</h2>
 					<div className="flex items-center justify-between">
 						<h3 className="font-semibold text-lg">Patients</h3>
 					</div>
@@ -59,7 +60,9 @@ export default async function Home() {
 											className="focus:outline-none group-hover:text-blue-600"
 										>
 											<span className="absolute inset-0" aria-hidden={true} />
-											Placeholder Text
+											{
+												patientsList ? (<><PatientsTable patientsList={patientsList} /></>) : (<span>No Patients...</span>)
+											}
 										</a>
 									</h3>
 									<p className="text-gray-600">Placeholder description</p>
