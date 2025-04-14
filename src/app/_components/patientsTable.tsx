@@ -1,7 +1,10 @@
-import type { patientData } from "./patientData";
+"use client";
+
+import { useState } from "react";
+import type { PatientData } from "./patientData";
 
 interface patientProps {
-    patientsList: patientData[];
+    patientsList: PatientData[];
 }
 
 export function PatientsTable({ patientsList }: patientProps) {
@@ -13,6 +16,8 @@ export function PatientsTable({ patientsList }: patientProps) {
         { label: "Current Status", coloumnId: "status" },
     ];
 
+    const [currentPatient, setCurrentPatient] = useState<PatientData | null>(null);
+
     return (
         <><div>
             <table className="table min-w-full text-left text-sm font-light text-surface dark:text-white">
@@ -20,11 +25,7 @@ export function PatientsTable({ patientsList }: patientProps) {
                     <tr>
                         {coloumns.map(({ label, coloumnId }) => {
                             return (
-                                <th
-                                    className="table-item"
-                                    key={coloumnId}
-                                //onClick={() => handleTableDataChange(coloumnId)}
-                                >
+                                <th key={coloumnId}>
                                     {label}
                                 </th>
                             );
@@ -32,12 +33,12 @@ export function PatientsTable({ patientsList }: patientProps) {
                     </tr>
                 </thead>
                 <tbody>
-                    {patientsList.map((patient: patientData) => {
+                    {patientsList.map((patient: PatientData) => {
                         return (
                             <tr
-                                key={patient.id}
-                                className="table-item border-b border-neutral-200 dark:border-white/10"
-                            //onClick={() => setCurrentUser(user)}
+                                key={"patient-row-id-" + patient.id}
+                                className={"table-item border-b border-neutral-200 dark:border-white/10 focus:outline-none " + (patient == currentPatient ? 'selected-row' : '')}
+                                onClick={() => setCurrentPatient(patient)}
                             >
                                 <td>{patient.firstName}</td>
                                 <td>{patient.lastName}</td>
@@ -46,10 +47,12 @@ export function PatientsTable({ patientsList }: patientProps) {
                                 <td>{patient.isActive ? "active" : "not active"}</td>
 
                             </tr>
+
                         );
                     })}
                 </tbody>
             </table>
+            {currentPatient ? currentPatient.firstName : "none selected"}
         </div>
         </>
     )

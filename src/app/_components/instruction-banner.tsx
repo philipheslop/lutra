@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
@@ -71,9 +73,14 @@ export default function Steps() {
 }
 
 function InstructionBanner() {
+	const [isVisible, setIsVisible] = useState(true)
+
 	return (
 		<>
-			<div className="relative rounded-lg border border-gray-200 bg-white p-4">
+			<button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => setIsVisible(!isVisible)}>
+				Toggle Instructions
+			</button>
+			{isVisible && <div className="relative rounded-lg border border-gray-200 bg-white p-4">
 				<div className="flex flex-col items-center gap-6 md:flex-row md:gap-12">
 					<div className="flex max-w-lg flex-col gap-2">
 						<h3 className="font-semibold">Lutra Health Technical Assessment</h3>
@@ -105,7 +112,7 @@ function InstructionBanner() {
 					</div>
 					<Steps />
 				</div>
-			</div>
+			</div>}
 		</>
 	);
 }
