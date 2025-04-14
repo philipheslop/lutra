@@ -2,11 +2,23 @@ import { HydrateClient, api } from "@lutra/trpc/server";
 import { InstructionBanner } from "./_components/instruction-banner";
 import type { PatientData } from "./_components/patientData";
 import { PatientsTable } from "./_components/patientsTable";
+import type { AppointmentData } from "./_components/appointmentData";
 
 
 export default async function Home() {
 	//const greeting = await api.hello.greeting();
 	const patientsList: PatientData[] | null = await api.patients.patientsList();
+	/*const appointmetsList: AppointmentData[] | null = await api.appointments.appointmentsList();
+	const appointsmentByPatient: AppointmentData[] | null = await api.appointments.appointmentsByPatient({ patientId: 1 })
+
+	const getAppointmentsByPatient = async (patientId: number) => {
+		return await api.appointments.appointmentsByPatient({ patientId: patientId })
+	}
+
+	const createAppointment = async (appointment: AppointmentData) => {
+		const { id, ...app } = appointment;
+		return await api.appointments.
+	};*/
 
 	return (
 		<HydrateClient>

@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import type { PatientData } from "./patientData";
+import { PatientInfo } from "./patientInfo";
 
-interface patientProps {
+interface patientListProps {
     patientsList: PatientData[];
 }
 
-export function PatientsTable({ patientsList }: patientProps) {
+export function PatientsTable({ patientsList }: patientListProps) {
     const coloumns = [
         { label: "First Name", coloumnId: "firstname" },
         { label: "Last Name", coloumnId: "lastname" },
@@ -17,6 +18,7 @@ export function PatientsTable({ patientsList }: patientProps) {
     ];
 
     const [currentPatient, setCurrentPatient] = useState<PatientData | null>(null);
+    //const appointmetsList: AppointmentData[] | null = await db.query.appointments.findMany();
 
     return (
         <><div>
@@ -45,14 +47,13 @@ export function PatientsTable({ patientsList }: patientProps) {
                                 <td>{patient.email}</td>
                                 <td>{patient.dateOfBirth}</td>
                                 <td>{patient.isActive ? "active" : "not active"}</td>
-
                             </tr>
 
                         );
                     })}
                 </tbody>
             </table>
-            {currentPatient ? currentPatient.firstName : "none selected"}
+            {currentPatient ? (<><PatientInfo patient={currentPatient} /></>) : "none selected"}
         </div>
         </>
     )
