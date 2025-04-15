@@ -73,7 +73,7 @@ export default function Steps() {
 }
 
 function InstructionBanner() {
-	const [isVisible, setIsVisible] = useState(true)
+	const [isVisible, setIsVisible] = useState(false)
 
 	return (
 		<>
