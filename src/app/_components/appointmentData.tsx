@@ -4,7 +4,7 @@ export interface AppointmentData {
     updatedAt: Date | null;
     patientId: number;
     scheduledFor: Date;
-    status: "SCHEDULED" | "CONFIRMED" | "COMPLETED" | "CANCELLED";
+    status: "SCHEDULED" | "CONFIRMED" | "COMPLETED" | "CANCELLED" | string;
     reason: string;
     notes: string | null;
 }
