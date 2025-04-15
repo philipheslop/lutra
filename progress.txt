@@ -25,7 +25,15 @@ Tasks
 - add drizzle-seed library for seeding
 	and create initial seed.ts
 	* manual seeding in order to progress to second part of task
+	* (tried various configs to get thsi working: https://www.youtube.com/watch?v=jn370WEIvjs)
 	
 - added routing for patient database
 
 - added basic listing of patients
+
+- added appointments mock and basic modal
+	* not able to get mutate working, moving on for time.
+
+- added modal form and handler (adds appointment data to the mock)
+
+- final style tweaks
